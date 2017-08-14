@@ -15,21 +15,20 @@ class App extends React.Component {
   render () {
     return (
       <div>
-        <input
-          type='text'
-          onChange={this.update.bind(this)}
-        />
+        <MagicTextBox update={this.update.bind(this)} />
         <h1>{this.state.txt}</h1>
       </div>
     )
   }
 }
 
+const MagicTextBox = props => <input type='text' onChange={props.update} />
+
 export default App
 
 // Class Component ( w/ JSX )
 // class App extends React.Component {
-//   render () {
+//   render () {`
 //     return <h1>Hello World!</h1>
 //   }
 // }
