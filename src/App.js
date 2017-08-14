@@ -1,4 +1,5 @@
 import React from 'react'
+import JsxToJs from './JsxToJs'
 
 class App extends React.Component {
   constructor () {
@@ -25,6 +26,8 @@ class App extends React.Component {
   render () {
     return (
       <div>
+        <JsxToJs />
+        <p>----</p>
         <MagicTextBox update={this.update.bind(this)} />
         <h1>{this.state.txt}</h1>
         <TextAreaBox />
