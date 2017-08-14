@@ -17,12 +17,47 @@ class App extends React.Component {
       <div>
         <MagicTextBox update={this.update.bind(this)} />
         <h1>{this.state.txt}</h1>
+        <TextAreaBox />
       </div>
     )
   }
 }
 
 const MagicTextBox = props => <input type='text' onChange={props.update} />
+
+class TextAreaBox extends React.Component {
+  constructor () {
+    super()
+    this.state = {
+      eventType: 'default state text'
+    }
+    this.update = this.update.bind(this)
+  }
+  update (event) {
+    this.setState({
+      eventType: event.type
+    })
+  }
+  render () {
+    return (
+      <div>
+        <textarea
+          cols='40'
+          rows='15'
+          onKeyPress={this.update}
+          onCopy={this.update}
+          onCut={this.update}
+          onPaste={this.update}
+          onFocus={this.update}
+          onBlur={this.update}
+          onMouseOver={this.update}
+          onMouseLeave={this.update}
+        />
+        <h1>{this.state.eventType}</h1>
+      </div>
+    )
+  }
+}
 
 export default App
 
