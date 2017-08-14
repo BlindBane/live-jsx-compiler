@@ -1,10 +1,11 @@
 import React from 'react'
+import './JsxToJs.css'
 
 class JsxToJs extends React.Component {
   constructor () {
     super()
     this.state = {
-      input: 'JSX goes here...',
+      input: '',
       output: '',
       err: ''
     }
@@ -25,11 +26,12 @@ class JsxToJs extends React.Component {
   render () {
     return (
       <div>
-        <h3>{this.state.err}</h3>
+        <header className='errors'>{this.state.err}</header>
         <div className='container'>
           <textarea
             onChange={this.update.bind(this)}
             defaultValue={this.state.input}
+            placeholder='JSX goes here...'
           />
           <pre>
             {this.state.output}
