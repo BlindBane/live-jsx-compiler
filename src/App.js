@@ -4,12 +4,22 @@ class App extends React.Component {
   constructor () {
     super()
     this.state = {
-      txt: 'this is the initial txt key property value in state.'
+      txt: 'this is the initial txt key property value in state.',
+      c: ''
     }
   }
   update (event) {
     this.setState({
-      txt: event.target.value
+      txt: event.target.value,
+      a: 'a',
+      b: 'b'
+    })
+  }
+  refUpdate () {
+    this.setState({
+      a: this.refs.a.value,
+      b: this.refs.b.value,
+      c: this.c.refs.refBoxInput.value
     })
   }
   render () {
@@ -18,12 +28,27 @@ class App extends React.Component {
         <MagicTextBox update={this.update.bind(this)} />
         <h1>{this.state.txt}</h1>
         <TextAreaBox />
+        <input ref='a' type='text' onChange={this.refUpdate.bind(this)} /> {this.state.a}
+        <input ref='b' type='text' onChange={this.refUpdate.bind(this)} /> {this.state.b}
+        <br />
+        <h6>MagicTextBoxRefs</h6>
+        <MagicTextBoxRefs
+          ref={component => this.c = component}
+          update={this.refUpdate.bind(this)}
+        /> {this.state.c}
       </div>
     )
   }
 }
 
 const MagicTextBox = props => <input type='text' onChange={props.update} />
+class MagicTextBoxRefs extends React.Component {
+  render () {
+    return (
+      <input ref='refBoxInput' type='text' onChange={this.props.update} />
+    )
+  }
+}
 
 class TextAreaBox extends React.Component {
   constructor () {
