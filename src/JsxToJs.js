@@ -15,7 +15,8 @@ class JsxToJs extends React.Component {
     try {
       this.setState({
         output: window.Babel.transform(code, { presets: ['es2015', 'react'] }).code,
-        err: ''
+        err: '',
+        input: ''
       })
     } catch (error) {
       this.setState({

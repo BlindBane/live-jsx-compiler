@@ -24,8 +24,8 @@ pre {
 
 pre, textarea {
   width: 50%;
-  font-size: 18px;
   font-family: monospace;
+  font-size: 18px;
   margin: 0;
   padding: 1%;
   color: #222;
